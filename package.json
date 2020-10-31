@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "parcel FreshDesk/html/index.html",
+    "start": "parcel src/html/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Srijan Kumar",
