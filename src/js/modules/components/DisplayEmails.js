@@ -20,7 +20,8 @@ function DisplayEmails({ emails, label }) {
                         <div
                             className="emailListItem"
                             data-id={email.id}
-                            onClick={(e) => {
+                            onContextMenu={(e) => {
+                                e.preventDefault();
                                 const emailClicked = e.currentTarget;
                                 console.log(e.currentTarget);
                                 emailClicked.classList.toggle("selected");

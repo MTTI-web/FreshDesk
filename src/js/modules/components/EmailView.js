@@ -13,6 +13,11 @@ function EmailView(props) {
                 <div className="emailViewSender">{emailSelected.senderName}</div>
                 <div className="emailViewSenderEmailAddress">{emailSelected.senderEmailAddress}</div>
             </div>
+            <div className="labelsList">{
+                emailSelected.labels.map(label => (
+                    <div className="labelTag" key={label}>{label}</div>
+                ))
+            }</div>
             <div className="emailViewContent">{emailSelected.content}</div>
         </div>
     );

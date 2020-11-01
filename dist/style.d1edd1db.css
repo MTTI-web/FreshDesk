@@ -196,4 +196,18 @@ header {
     border-radius: 10px;
 }
 
+.labelTag {
+    display: inline-block;
+    background-color: #ccc;
+    color: #282828;
+    padding: 2px 5px;
+    font-size: 80%;
+    border-radius: 7px;
+}
+
+.labelsList {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
 /*# sourceMappingURL=/style.d1edd1db.css.map */
