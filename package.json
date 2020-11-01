@@ -9,6 +9,7 @@
     "eslint-config-prettier": "^6.13.0",
     "parcel": "^1.12.4",
     "prettier": "^2.1.2",
+    "re": "^0.1.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router": "^5.2.0",

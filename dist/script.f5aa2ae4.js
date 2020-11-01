@@ -32785,6 +32785,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _emails = _interopRequireDefault(require("../data/emails.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -32798,11 +32800,17 @@ function EmailView(props) {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "emailView"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/"
+  }, "Back"), /*#__PURE__*/_react.default.createElement("div", {
     className: "emailViewSubject"
   }, emailSelected.subject), /*#__PURE__*/_react.default.createElement("div", {
+    className: "senderDetails"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "emailViewSender"
   }, emailSelected.senderName), /*#__PURE__*/_react.default.createElement("div", {
+    className: "emailViewSenderEmailAddress"
+  }, emailSelected.senderEmailAddress)), /*#__PURE__*/_react.default.createElement("div", {
     className: "emailViewContent"
   }, emailSelected.content));
 }
@@ -32810,7 +32818,7 @@ function EmailView(props) {
 ;
 var _default = EmailView;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","../data/emails.js":"../js/modules/data/emails.js"}],"../js/script.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../data/emails.js":"../js/modules/data/emails.js"}],"../js/script.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireWildcard(require("react"));
@@ -32960,7 +32968,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57483" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59871" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

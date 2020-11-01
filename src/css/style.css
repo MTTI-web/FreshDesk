@@ -66,7 +66,6 @@ header {
     white-space: nowrap;
     padding: 3px;
     user-select: none;
-    text-decoration: none;
 }
 
 .email-subject {
@@ -154,9 +153,32 @@ header {
 .emailViewContent {
     font-size: 90%;
     text-align: justify;
+    padding-right: 15px;
+}
+
+.senderDetails {
+    color: #adadad;
+    font-size: 85%;
 }
 
 .emailViewSender {
-    color: #adadad;
-    font-size: 85%;
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+}
+
+.emailViewSender::after {
+    content: "";
+    background-color: #adadad;
+    height: 6px;
+    width: 6px;
+    position: absolute;
+    left: calc(100% + 7px);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 100%;
+}
+
+.emailViewSenderEmailAddress {
+    display: inline-block;
 }
