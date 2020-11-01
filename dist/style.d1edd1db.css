@@ -183,4 +183,17 @@ header {
     display: inline-block;
 }
 
+.emailBackButton {
+    color: #ccc;
+    text-decoration: none;
+    background-color: #292929;
+    border: 2px solid #ccc;
+    display: flex;
+    padding: 5px;
+    width: 70px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
 /*# sourceMappingURL=/style.d1edd1db.css.map */

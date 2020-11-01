@@ -32801,7 +32801,8 @@ function EmailView(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "emailView"
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/"
+    to: "/",
+    className: "emailBackButton"
   }, "Back"), /*#__PURE__*/_react.default.createElement("div", {
     className: "emailViewSubject"
   }, emailSelected.subject), /*#__PURE__*/_react.default.createElement("div", {

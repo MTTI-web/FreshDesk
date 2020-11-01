@@ -7,7 +7,7 @@ function EmailView(props) {
     const emailSelected = emails.find((email) => (email.id == props.match.params.id));
     return (
         <div className="emailView">
-            <Link to="/">Back</Link>
+            <Link to="/" className="emailBackButton">Back</Link>
             <div className="emailViewSubject">{emailSelected.subject}</div>
             <div className="senderDetails">
                 <div className="emailViewSender">{emailSelected.senderName}</div>
