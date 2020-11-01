@@ -32352,7 +32352,7 @@ exports.default = void 0;
 var labels = ["Inbox", "Archived", "Bin", "Hello"];
 var _default = labels;
 exports.default = _default;
-},{}],"../js/modules/components/DisplayEmails.js":[function(require,module,exports) {
+},{}],"../js/modules/DisplayEmails.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32414,7 +32414,7 @@ function DisplayEmails(_ref) {
 ;
 var _default = DisplayEmails;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"../js/modules/components/DisplayLabels.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"../js/modules/DisplayLabels.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32446,7 +32446,7 @@ function DisplayLablels(_ref) {
 ;
 var _default = DisplayLablels;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"../js/modules/components/DisplayHeader.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"../js/modules/DisplayHeader.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32482,7 +32482,7 @@ function DisplayHeader() {
 ;
 var _default = DisplayHeader;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"../js/modules/components/DeleteEmailOption.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"../js/modules/DeleteEmailOption.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32540,7 +32540,7 @@ function DeleteEmailOption(_ref) {
 ;
 var _default = DeleteEmailOption;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"../js/modules/components/ArchiveEmailOption.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"../js/modules/ArchiveEmailOption.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32599,7 +32599,7 @@ function ArchiveEmailOption(_ref) {
 ;
 var _default = ArchiveEmailOption;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"../js/modules/components/CreateLabelOption.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"../js/modules/CreateLabelOption.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32656,7 +32656,7 @@ function CreateLabelOption(_ref) {
 ;
 var _default = CreateLabelOption;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"../js/modules/components/OpenDictionaryButton.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"../js/modules/OpenDictionaryButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32681,7 +32681,7 @@ function OpenDictionaryButton() {
 ;
 var _default = OpenDictionaryButton;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"../js/modules/components/Dictionary.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"../js/modules/Dictionary.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32689,11 +32689,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var baseEndpoint = "https://api.dictionaryapi.dev/api/v2/entries";
 
@@ -32733,7 +32731,7 @@ function Dictionary() {
 ;
 var _default = Dictionary;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"../js/modules/components/EmailView.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"../js/modules/EmailView.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32745,7 +32743,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _emails = _interopRequireDefault(require("../data/emails.js"));
+var _emails = _interopRequireDefault(require("./data/emails.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32784,7 +32782,7 @@ function EmailView(props) {
 ;
 var _default = EmailView;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../data/emails.js":"../js/modules/data/emails.js"}],"../js/script.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./data/emails.js":"../js/modules/data/emails.js"}],"../js/script.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireWildcard(require("react"));
@@ -32797,23 +32795,23 @@ var _emails = _interopRequireDefault(require("./modules/data/emails.js"));
 
 var _mainLabels = _interopRequireDefault(require("./modules/data/mainLabels.js"));
 
-var _DisplayEmails = _interopRequireDefault(require("./modules/components/DisplayEmails.js"));
+var _DisplayEmails = _interopRequireDefault(require("./modules/DisplayEmails.js"));
 
-var _DisplayLabels = _interopRequireDefault(require("./modules/components/DisplayLabels.js"));
+var _DisplayLabels = _interopRequireDefault(require("./modules/DisplayLabels.js"));
 
-var _DisplayHeader = _interopRequireDefault(require("./modules/components/DisplayHeader.js"));
+var _DisplayHeader = _interopRequireDefault(require("./modules/DisplayHeader.js"));
 
-var _DeleteEmailOption = _interopRequireDefault(require("./modules/components/DeleteEmailOption.js"));
+var _DeleteEmailOption = _interopRequireDefault(require("./modules/DeleteEmailOption.js"));
 
-var _ArchiveEmailOption = _interopRequireDefault(require("./modules/components/ArchiveEmailOption.js"));
+var _ArchiveEmailOption = _interopRequireDefault(require("./modules/ArchiveEmailOption.js"));
 
-var _CreateLabelOption = _interopRequireDefault(require("./modules/components/CreateLabelOption.js"));
+var _CreateLabelOption = _interopRequireDefault(require("./modules/CreateLabelOption.js"));
 
-var _OpenDictionaryButton = _interopRequireDefault(require("./modules/components/OpenDictionaryButton.js"));
+var _OpenDictionaryButton = _interopRequireDefault(require("./modules/OpenDictionaryButton.js"));
 
-var _Dictionary = _interopRequireDefault(require("./modules/components/Dictionary.js"));
+var _Dictionary = _interopRequireDefault(require("./modules/Dictionary.js"));
 
-var _EmailView = _interopRequireDefault(require("./modules/components/EmailView.js"));
+var _EmailView = _interopRequireDefault(require("./modules/EmailView.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32906,7 +32904,7 @@ function App() {
 
 ;
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('root'));
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./modules/data/emails.js":"../js/modules/data/emails.js","./modules/data/mainLabels.js":"../js/modules/data/mainLabels.js","./modules/components/DisplayEmails.js":"../js/modules/components/DisplayEmails.js","./modules/components/DisplayLabels.js":"../js/modules/components/DisplayLabels.js","./modules/components/DisplayHeader.js":"../js/modules/components/DisplayHeader.js","./modules/components/DeleteEmailOption.js":"../js/modules/components/DeleteEmailOption.js","./modules/components/ArchiveEmailOption.js":"../js/modules/components/ArchiveEmailOption.js","./modules/components/CreateLabelOption.js":"../js/modules/components/CreateLabelOption.js","./modules/components/OpenDictionaryButton.js":"../js/modules/components/OpenDictionaryButton.js","./modules/components/Dictionary.js":"../js/modules/components/Dictionary.js","./modules/components/EmailView.js":"../js/modules/components/EmailView.js"}],"../../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./modules/data/emails.js":"../js/modules/data/emails.js","./modules/data/mainLabels.js":"../js/modules/data/mainLabels.js","./modules/DisplayEmails.js":"../js/modules/DisplayEmails.js","./modules/DisplayLabels.js":"../js/modules/DisplayLabels.js","./modules/DisplayHeader.js":"../js/modules/DisplayHeader.js","./modules/DeleteEmailOption.js":"../js/modules/DeleteEmailOption.js","./modules/ArchiveEmailOption.js":"../js/modules/ArchiveEmailOption.js","./modules/CreateLabelOption.js":"../js/modules/CreateLabelOption.js","./modules/OpenDictionaryButton.js":"../js/modules/OpenDictionaryButton.js","./modules/Dictionary.js":"../js/modules/Dictionary.js","./modules/EmailView.js":"../js/modules/EmailView.js"}],"../../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 const baseEndpoint = `https://api.dictionaryapi.dev/api/v2/entries`;
 
 function Dictionary() {

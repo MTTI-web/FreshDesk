@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import emails from '../data/emails.js';
+import emails from './emails.js';
 
 function EmailView(props) {
     console.log(props.match.params.id);

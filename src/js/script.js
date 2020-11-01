@@ -3,18 +3,18 @@ import React, { useState } from 'react';
 import { render } from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 // Importing Data
-import emailsWithIDs from './modules/data/emails.js';
-import labelsArray from './modules/data/mainLabels.js';
+import emailsWithIDs from './modules/emails.js';
+import labelsArray from './modules/mainLabels.js';
 // Importing Components
-import DisplayEmails from './modules/components/DisplayEmails.js';
-import DisplayLabels from "./modules/components/DisplayLabels.js";
-import DisplayHeader from './modules/components/DisplayHeader.js';
-import DeleteEmailOption from './modules/components/DeleteEmailOption.js';
-import ArchiveEmailOption from './modules/components/ArchiveEmailOption.js';
-import CreateLabelOption from './modules/components/CreateLabelOption.js';
-import OpenDictionaryButton from './modules/components/OpenDictionaryButton.js';
-import Dictionary from './modules/components/Dictionary.js';
-import EmailView from './modules/components/EmailView.js';
+import DisplayEmails from './modules/DisplayEmails.js';
+import DisplayLabels from "./modules/DisplayLabels.js";
+import DisplayHeader from './modules/DisplayHeader.js';
+import DeleteEmailOption from './modules/DeleteEmailOption.js';
+import ArchiveEmailOption from './modules/ArchiveEmailOption.js';
+import CreateLabelOption from './modules/CreateLabelOption.js';
+import OpenDictionaryButton from './modules/OpenDictionaryButton.js';
+import Dictionary from './modules/Dictionary.js';
+import EmailView from './modules/EmailView.js';
 
 function App() {
     const [labels, setLabels] = useState([...labelsArray]);
