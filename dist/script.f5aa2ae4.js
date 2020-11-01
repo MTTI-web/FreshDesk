@@ -32702,6 +32702,8 @@ function Dictionary() {
   // wordDefAPI.then(data => { wordDef = (data) });
   // console.log(wordDef);
   return /*#__PURE__*/_react.default.createElement("div", {
+    className: "dictionaryOuterModal"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "dictionary"
   }, /*#__PURE__*/_react.default.createElement("form", {
     className: "findWordForm"
@@ -32725,7 +32727,7 @@ function Dictionary() {
     type: "submit"
   }, "Find")), /*#__PURE__*/_react.default.createElement("div", {
     className: "defintion"
-  }));
+  })));
 }
 
 ;
@@ -32932,7 +32934,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59871" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62283" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
