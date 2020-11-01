@@ -3,18 +3,18 @@ import React, { useState } from 'react';
 import { render } from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 // Importing Data
-import emailsWithIDs from './modules/emails.js';
-import labelsArray from './modules/mainLabels.js';
+import emailsWithIDs from './emails.js';
+import labelsArray from './mainLabels.js';
 // Importing Components
-import DisplayEmails from './modules/DisplayEmails.js';
-import DisplayLabels from "./modules/DisplayLabels.js";
-import DisplayHeader from './modules/DisplayHeader.js';
-import DeleteEmailOption from './modules/DeleteEmailOption.js';
-import ArchiveEmailOption from './modules/ArchiveEmailOption.js';
-import CreateLabelOption from './modules/CreateLabelOption.js';
-import OpenDictionaryButton from './modules/OpenDictionaryButton.js';
-import Dictionary from './modules/Dictionary.js';
-import EmailView from './modules/EmailView.js';
+import DisplayEmails from './DisplayEmails.js';
+import DisplayLabels from "./DisplayLabels.js";
+import DisplayHeader from './DisplayHeader.js';
+import DeleteEmailOption from './DeleteEmailOption.js';
+import ArchiveEmailOption from './ArchiveEmailOption.js';
+import CreateLabelOption from './CreateLabelOption.js';
+import OpenDictionaryButton from './OpenDictionaryButton.js';
+import Dictionary from './Dictionary.js';
+import EmailView from './EmailView.js';
 
 function App() {
     const [labels, setLabels] = useState([...labelsArray]);
