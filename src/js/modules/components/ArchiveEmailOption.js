@@ -3,7 +3,7 @@ import React from 'react';
 function ArchiveEmailOption({ setArchivedEmails, archivedEmails, emailsWithIDs }) {
     return (
         <div
-            className="archive-option"
+            className="archive-email-option"
             onClick={(e) => {
                 const selectedEmails = document.querySelectorAll(".emailListItem.selected");
                 let IDsOfSelectedEmails = [];

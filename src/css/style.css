@@ -8,6 +8,7 @@ body {
     background-color: #282828;
     font-size: 20px;
     color: #ccc;
+    position: relative;
 }
 
 header {
@@ -55,6 +56,7 @@ header {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
     padding: 3px;
     user-select: none;
 }
@@ -77,4 +79,61 @@ header {
     white-space: nowrap;
     font-size: 80%;
     user-select: none;
+}
+
+.dictionaryOuterModal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 50%);
+}
+
+.dictionary {
+    width: 70%;
+    height: 200px;
+    overflow: scroll;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dictionaryOuterModal.using {
+    pointer-events: all;
+    opacity: 100%;
+}
+
+.dictionaryOuterModal.using .dictionary {
+    background-color: #282828;
+}
+
+.edit-options-bar {
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.quick-edit-options {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.delete-email-option {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.archive-email-option {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
 }

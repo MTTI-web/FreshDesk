@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function DisplayEmails({ emails, label }) {
     let emailsOfLabels;
@@ -10,31 +11,32 @@ function DisplayEmails({ emails, label }) {
         emailsOfLabels = emails.filter(email => email.archived);
     } else if (label == "Bin") {
         emailsOfLabels = emails.filter(email => email.deleted);
-    }
+    };
     return (
         <div className="emailsList">
             {
                 emailsOfLabels.map(email => (
-                    <div
-                        className="emailListItem"
-                        key={email.id}
-                        data-id={email.id}
-                        onClick={(e) => {
-                            const emailClicked = e.currentTarget;
-                            console.log(e.currentTarget);
-                            emailClicked.classList.toggle("selected");
-                        }}
-                    >
-                        <div className="sender-name">
-                            {email.senderName}
+                    <Link to={`/emailView/${email.id}`} key={email.id}>
+                        <div
+                            className="emailListItem"
+                            data-id={email.id}
+                            onClick={(e) => {
+                                const emailClicked = e.currentTarget;
+                                console.log(e.currentTarget);
+                                emailClicked.classList.toggle("selected");
+                            }}
+                        >
+                            <div className="sender-name">
+                                {email.senderName}
+                            </div>
+                            <div className="email-subject">
+                                {email.subject}
+                            </div>
+                            <div className="email-content-preview">
+                                {email.content}
+                            </div>
                         </div>
-                        <div className="email-subject">
-                            {email.subject}
-                        </div>
-                        <div className="email-content-preview">
-                            {email.content}
-                        </div>
-                    </div>
+                    </Link>
                 ))
             }
         </div>

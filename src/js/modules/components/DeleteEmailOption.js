@@ -3,7 +3,7 @@ import React from 'react';
 function DeleteEmailOption({ setDeletedEmails, deletedEmails, emailsWithIDs }) {
     return (
         <div
-            className="delete-option"
+            className="delete-email-option"
             onClick={(e) => {
                 const selectedEmails = document.querySelectorAll(".emailListItem.selected");
                 let IDsOfSelectedEmails = [];
