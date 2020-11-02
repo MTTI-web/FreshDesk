@@ -32297,34 +32297,34 @@ exports.default = void 0;
 var _utility_funcitons = require("./utility_funcitons.js");
 
 var emails = [{
-  subject: "Lorem ipsum dolor sit amet.",
+  subject: "Lorem ipsum dolor sit amet",
   content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
-  senderEmailAddress: "abc@gmail.com",
+  senderEmailAddress: "amazon@gmail.com",
   senderName: "Amazon",
   deleted: false,
   archived: false,
   labels: ["Inbox"]
 }, {
-  subject: "Lorem ipsum dolor sit amet.",
+  subject: "Security issue",
   content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
-  senderEmailAddress: "abc@gmail.com",
-  senderName: "Amazon",
+  senderEmailAddress: "google@gmail.com",
+  senderName: "Google",
   deleted: false,
   archived: false,
   labels: ["Inbox"]
 }, {
-  subject: "Lorem ipsum dolor sit amet.",
+  subject: "Your new site is published",
   content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
-  senderEmailAddress: "abc@gmail.com",
-  senderName: "Amazon",
+  senderEmailAddress: "github@gmail.com",
+  senderName: "GitHub",
   deleted: false,
   archived: false,
   labels: ["Inbox"]
 }, {
-  subject: "Lorem ipsum dolor sit amet.",
+  subject: "A new assignment posted",
   content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
-  senderEmailAddress: "abc@gmail.com",
-  senderName: "Amazon",
+  senderEmailAddress: "classroom@gmail.com",
+  senderName: "Classroom",
   deleted: false,
   archived: false,
   labels: ["Inbox"]
@@ -33006,7 +33006,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52687" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54239" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
