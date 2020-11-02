@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { setState } from 'react';
 const baseEndpoint = `https://api.dictionaryapi.dev/api/v2/entries`;
 
 function Dictionary() {
     // const wordDefAPI = fetch(`${baseEndpoint}/${lang}/${word}`).then(data => data.json());
     // wordDefAPI.then(data => { wordDef = (data) });
     // console.log(wordDef);
+    const [currentLang, setCurrentLang] = setState("en");
+    const [currentWord, setCurrentWord] = setState("");
     return (
         <div className="dictionaryOuterModal">
             <div className="dictionary">
-                <form className="findWordForm">
+                <form
+                    className="findWordForm"
+                    onSubmit={(e) => {
+                        
+                    }}
+                >
                     <input type="text" name="findWordInput" id="findWordInput" />
                     <select
                         name="langSelectInput"

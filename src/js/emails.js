@@ -1,4 +1,4 @@
-import { createUniqueEmailID } from '../../utility_funcitons.js';
+import { createUniqueEmailID } from './utility_funcitons.js';
 
 const emails = [
     {
