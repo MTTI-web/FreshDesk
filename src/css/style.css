@@ -110,15 +110,12 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #282828;
 }
 
 .dictionaryOuterModal.using {
     pointer-events: all;
     opacity: 100%;
-}
-
-.dictionaryOuterModal.using .dictionary {
-    background-color: #282828;
 }
 
 .edit-options-bar {

@@ -50,9 +50,15 @@ function Dictionary() {
                 {!wordDef.word
                     ? <div className="noWordChosen">No word chosen</div>
                     : <div className="defintion">
-                    <h1 className="word">{wordDef.word || "No word chosen"}</h1>
-                    <div className="wordDetails">{wordDef.phonetics[0].text || ""}</div>
-                    <div className="wordMeaning">{wordDef.meanings[0].definitions[0].definition || ""}</div>
+                    <h1 className="word">{
+                        wordDef.word || "No word chosen"
+                    }</h1>
+                    <div className="wordDetails">{
+                        wordDef.phonetics[0].text || ""
+                    }</div>
+                    <div className="wordMeaning">{
+                        wordDef.meanings[0].definitions[0].definition || ""
+                    }</div>
                 </div>}
             </div>
         </div>
