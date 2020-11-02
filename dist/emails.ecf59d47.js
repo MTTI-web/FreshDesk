@@ -117,79 +117,93 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"../js/utility_funcitons.js":[function(require,module,exports) {
+"use strict";
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createUniqueEmailID = createUniqueEmailID;
+var characters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+function createUniqueEmailID() {
+  var IDArray = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var uniqueEmailID = "";
+
+  for (var i = 0; i < 10; i++) {
+    uniqueEmailID += characters[Math.floor(Math.random() * characters.length)];
   }
 
-  return bundleURL;
-}
+  ;
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
+  if (!IDArray.includes(uniqueEmailID)) {
+    console.log(uniqueEmailID);
+    return uniqueEmailID;
+  } else {
+    createUniqueEmailID();
   }
 
-  return '/';
+  ;
 }
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+;
+},{}],"../js/emails.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _utility_funcitons = require("./utility_funcitons.js");
+
+var emails = [{
+  subject: "Lorem ipsum dolor sit amet.",
+  content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
+  senderEmailAddress: "abc@gmail.com",
+  senderName: "Amazon",
+  deleted: false,
+  archived: false,
+  labels: ["Inbox"]
+}, {
+  subject: "Lorem ipsum dolor sit amet.",
+  content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
+  senderEmailAddress: "abc@gmail.com",
+  senderName: "Amazon",
+  deleted: false,
+  archived: false,
+  labels: ["Inbox"]
+}, {
+  subject: "Lorem ipsum dolor sit amet.",
+  content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
+  senderEmailAddress: "abc@gmail.com",
+  senderName: "Amazon",
+  deleted: false,
+  archived: false,
+  labels: ["Inbox"]
+}, {
+  subject: "Lorem ipsum dolor sit amet.",
+  content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
+  senderEmailAddress: "abc@gmail.com",
+  senderName: "Amazon",
+  deleted: false,
+  archived: false,
+  labels: ["Inbox"]
+}];
+var emailIDArray = [];
+
+for (var i = 0; i < emails.length; i++) {
+  emailIDArray.push((0, _utility_funcitons.createUniqueEmailID)(emailIDArray));
 }
 
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../node_modules/parcel/src/builtins/bundle-url.js"}],"../css/style.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../node_modules/parcel/src/builtins/css-loader.js"}],"../../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+;
+var emailsWithIDs = emails.map(function (email, id) {
+  email.id = emailIDArray[id];
+  console.log(id);
+});
+var _default = emails;
+exports.default = _default;
+},{"./utility_funcitons.js":"../js/utility_funcitons.js"}],"../../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +231,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52687" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49783" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -393,5 +407,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../node_modules/parcel/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/style.d1edd1db.js.map
+},{}]},{},["../../node_modules/parcel/src/builtins/hmr-runtime.js","../js/emails.js"], null)
+//# sourceMappingURL=/emails.ecf59d47.js.map

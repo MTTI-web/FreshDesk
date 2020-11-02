@@ -32707,21 +32707,48 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 var baseEndpoint = "https://api.dictionaryapi.dev/api/v2/entries";
 
-function Dictionary() {
-  // const wordDefAPI = fetch(`${baseEndpoint}/${lang}/${word}`).then(data => data.json());
-  // wordDefAPI.then(data => { wordDef = (data) });
-  // console.log(wordDef);
-  var _setState = (0, _react.setState)("en"),
-      _setState2 = _slicedToArray(_setState, 2),
-      currentLang = _setState2[0],
-      setCurrentLang = _setState2[1];
+function fetchWordDef(_x, _x2) {
+  return _fetchWordDef.apply(this, arguments);
+}
 
-  var _setState3 = (0, _react.setState)(""),
-      _setState4 = _slicedToArray(_setState3, 2),
-      currentWord = _setState4[0],
-      setCurrentWord = _setState4[1];
+function _fetchWordDef() {
+  _fetchWordDef = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(word, lang) {
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _fetchWordDef.apply(this, arguments);
+}
+
+;
+
+function Dictionary() {
+  var _useState = (0, _react.useState)("en"),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentLang = _useState2[0],
+      setCurrentLang = _useState2[1];
+
+  var _useState3 = (0, _react.useState)("hi"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      currentWord = _useState4[0],
+      setCurrentWord = _useState4[1];
+
+  var _useState5 = (0, _react.useState)({}),
+      _useState6 = _slicedToArray(_useState5, 2),
+      wordDef = _useState6[0],
+      setWordDef = _useState6[1];
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "dictionaryOuterModal"
@@ -32729,15 +32756,29 @@ function Dictionary() {
     className: "dictionary"
   }, /*#__PURE__*/_react.default.createElement("form", {
     className: "findWordForm",
-    onSubmit: function onSubmit(e) {}
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      fetch("".concat(baseEndpoint, "/").concat(currentLang, "/").concat(currentWord)).then(function (data) {
+        data.json().then(function (def) {
+          console.log(def[0]);
+          setWordDef(def[0]);
+        });
+      });
+    }
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "findWordInput",
-    id: "findWordInput"
+    id: "findWordInput",
+    onChange: function onChange(e) {
+      setCurrentWord(e.currentTarget.value);
+    }
   }), /*#__PURE__*/_react.default.createElement("select", {
     name: "langSelectInput",
     id: "langSelectInput",
-    value: "English"
+    value: "English",
+    onChange: function onChange(e) {
+      setCurrentLang(e.currentTarget.value);
+    }
   }, /*#__PURE__*/_react.default.createElement("option", {
     value: "en"
   }, "English"), /*#__PURE__*/_react.default.createElement("option", {
@@ -32748,9 +32789,17 @@ function Dictionary() {
     value: "es"
   }, "Spanish")), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
-  }, "Find")), /*#__PURE__*/_react.default.createElement("div", {
+  }, "Find")), !wordDef.word ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "noWordChosen"
+  }, "No word chosen") : /*#__PURE__*/_react.default.createElement("div", {
     className: "defintion"
-  })));
+  }, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "word"
+  }, wordDef.word || "No word chosen"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "wordDetails"
+  }, wordDef.phonetics[0].text || ""), /*#__PURE__*/_react.default.createElement("div", {
+    className: "wordMeaning"
+  }, wordDef.meanings[0].definitions[0].definition || ""))));
 }
 
 ;
@@ -32957,7 +33006,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49783" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52687" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
