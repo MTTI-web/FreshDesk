@@ -1,3 +1,3 @@
-let labels = ["Inbox", "Archived", "Bin", "Hello"];
+let labels = ["Inbox", "Archived", "Bin"];
 
 export default labels;

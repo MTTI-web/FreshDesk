@@ -32349,7 +32349,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var labels = ["Inbox", "Archived", "Bin", "Hello"];
+var labels = ["Inbox", "Archived", "Bin"];
 var _default = labels;
 exports.default = _default;
 },{}],"../js/DisplayEmails.js":[function(require,module,exports) {
@@ -32729,6 +32729,11 @@ function Dictionary() {
       wordDef = _useState6[0],
       setWordDef = _useState6[1];
 
+  var _useState7 = (0, _react.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      isLoading = _useState8[0],
+      setLoadingState = _useState8[1];
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "dictionaryOuterModal"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -32742,15 +32747,13 @@ function Dictionary() {
     className: "findWordForm",
     onSubmit: function onSubmit(e) {
       e.preventDefault();
+      setLoadingState(true);
       fetch("".concat(baseEndpoint, "/").concat(currentLang, "/").concat(currentWord)).then(function (data) {
         data.json().then(function (def) {
           console.log(def[0]);
           setWordDef(def[0]);
+          setLoadingState(false);
         }, console.error);
-      }, function () {
-        setWordDef({
-          word: undefined
-        });
       });
     }
   }, /*#__PURE__*/_react.default.createElement("input", {
@@ -32777,9 +32780,11 @@ function Dictionary() {
     value: "es"
   }, "Spanish")), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
-  }, "Find")), Object.keys(wordDef).length == 0 ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "noWordChosen"
+  }, "Find")), Object.keys(wordDef).length == 0 ? !isLoading ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "message"
   }, "No word chosen") : /*#__PURE__*/_react.default.createElement("div", {
+    className: "loading"
+  }, "Loading...") : !isLoading ? /*#__PURE__*/_react.default.createElement("div", {
     className: "defintion"
   }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "word"
@@ -32787,7 +32792,9 @@ function Dictionary() {
     className: "wordDetails"
   }, wordDef.phonetics[0].text || ""), /*#__PURE__*/_react.default.createElement("div", {
     className: "wordMeaning"
-  }, wordDef.meanings[0].definitions[0].definition || ""))));
+  }, wordDef.meanings[0].definitions[0].definition || "")) : /*#__PURE__*/_react.default.createElement("div", {
+    className: "loading"
+  }, "Loading...")));
 }
 
 ;

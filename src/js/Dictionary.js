@@ -5,6 +5,7 @@ function Dictionary() {
     const [currentLang, setCurrentLang] = useState("en");
     const [currentWord, setCurrentWord] = useState("hi");
     const [wordDef, setWordDef] = useState({});
+    const [isLoading, setLoadingState] = useState(false);
     return (
         <div className="dictionaryOuterModal">
             <div className="dictionary">
@@ -18,13 +19,13 @@ function Dictionary() {
                     className="findWordForm"
                     onSubmit={(e) => {
                         e.preventDefault();
+                        setLoadingState(true);
                         fetch(`${baseEndpoint}/${currentLang}/${currentWord}`).then(data => {
                             data.json().then(def => {
                                 console.log(def[0]);
                                 setWordDef(def[0]);
+                                setLoadingState(false);
                             }, console.error);
-                        }, () => {
-                                setWordDef({ word: undefined });
                         });
                     }}
                 >
@@ -52,9 +53,12 @@ function Dictionary() {
                     <button type="submit">Find</button>
                 </form>
                 {Object.keys(wordDef).length == 0
-                    ? <div className="noWordChosen">No word chosen</div>
-                    : (
-                        <div className="defintion">
+                    ? (!isLoading
+                        ? <div className="message">No word chosen</div>
+                        : <div className="loading">Loading...</div>
+                    )
+                    : (!isLoading
+                        ? <div className="defintion">
                             <h1 className="word">
                                 {wordDef.word || "Sorry, we could not find the definition of the given word."}
                             </h1>
@@ -65,6 +69,7 @@ function Dictionary() {
                                 {wordDef.meanings[0].definitions[0].definition || ""}
                             </div>
                         </div>
+                        : <div className="loading">Loading...</div>
                     )
                 }
             </div>
