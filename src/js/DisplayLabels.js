@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link, Router } from 'react-router-dom';
 
-function DisplayLablels({ labels, setCurrentLabel }) {
+function DisplayLablels({ labels, setCurrentLabel, currentLabel }) {
     return (
         <div className="sidebar">
             {labels.map(label => (
-                <div
-                    className="label-filter"
+                <Link
+                    to="/"
+                    className={`label-filter ${label == currentLabel ? "currentLabel" : ""}`}
                     key={label}
                     onClick={(e) => {
                         console.log(e.currentTarget);
@@ -13,7 +15,7 @@ function DisplayLablels({ labels, setCurrentLabel }) {
                     }}
                 >
                     {label}
-                </div>
+                </Link>
             ))}
         </div>
     );

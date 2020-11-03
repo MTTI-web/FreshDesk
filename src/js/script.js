@@ -50,22 +50,22 @@ function App() {
             </div>
             <Dictionary />
             <div className="main-section">
-                <DisplayLabels labels={labels} setCurrentLabel={setCurrentLabel} />
                 <Router>
-                    <Switch>
-                        <Route
-                            path="/"
-                            render={() => (
-                                <DisplayEmails emails={emailsWithIDs} label={currentLabel} />
-                            )}
-                            exact
-                        />
-                        <Route
-                            path="/emailView/:id"
-                            component={EmailView}
-                            exact
-                        />
-                    </Switch>
+                <DisplayLabels labels={labels} setCurrentLabel={setCurrentLabel} currentLabel={currentLabel} />
+                <Switch>
+                    <Route
+                        path="/"
+                        render={() => (
+                            <DisplayEmails emails={emailsWithIDs} label={currentLabel} />
+                        )}
+                        exact
+                    />
+                    <Route
+                        path="/emailView/:id"
+                        component={EmailView}
+                        exact
+                    />
+                </Switch>
                 </Router>
             </div>
         </div>

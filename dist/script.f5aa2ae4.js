@@ -32297,7 +32297,7 @@ exports.default = void 0;
 var _utility_funcitons = require("./utility_funcitons.js");
 
 var emails = [{
-  subject: "Lorem ipsum dolor sit amet",
+  subject: "Order has been delivered",
   content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consectetur rem consequatur! Exercitationem, est? Quidem itaque deserunt maxime expedita consectetur, repellat est dolor minima nesciunt culpa quae vitae eveniet deleniti consequuntur ab similique doloremque voluptatem optio. Ipsa cupiditate perferendis eum nisi in nam distinctio sed neque fugiat molestiae! Id, ex.",
   senderEmailAddress: "amazon@gmail.com",
   senderName: "Amazon",
@@ -32424,16 +32424,20 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function DisplayLablels(_ref) {
   var labels = _ref.labels,
-      setCurrentLabel = _ref.setCurrentLabel;
+      setCurrentLabel = _ref.setCurrentLabel,
+      currentLabel = _ref.currentLabel;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "sidebar"
   }, labels.map(function (label) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      className: "label-filter",
+    return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      to: "/",
+      className: "label-filter ".concat(label == currentLabel ? "currentLabel" : ""),
       key: label,
       onClick: function onClick(e) {
         console.log(e.currentTarget);
@@ -32446,7 +32450,7 @@ function DisplayLablels(_ref) {
 ;
 var _default = DisplayLablels;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"../js/DisplayHeader.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"../js/DisplayHeader.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32707,32 +32711,7 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 var baseEndpoint = "https://api.dictionaryapi.dev/api/v2/entries";
-
-function fetchWordDef(_x, _x2) {
-  return _fetchWordDef.apply(this, arguments);
-}
-
-function _fetchWordDef() {
-  _fetchWordDef = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(word, lang) {
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _fetchWordDef.apply(this, arguments);
-}
-
-;
 
 function Dictionary() {
   var _useState = (0, _react.useState)("en"),
@@ -32754,7 +32733,12 @@ function Dictionary() {
     className: "dictionaryOuterModal"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "dictionary"
-  }, /*#__PURE__*/_react.default.createElement("form", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "closeDictionaryButton",
+    onClick: function onClick(e) {
+      document.querySelector('.dictionaryOuterModal').classList.remove("using");
+    }
+  }, "\xD7"), /*#__PURE__*/_react.default.createElement("form", {
     className: "findWordForm",
     onSubmit: function onSubmit(e) {
       e.preventDefault();
@@ -32762,6 +32746,10 @@ function Dictionary() {
         data.json().then(function (def) {
           console.log(def[0]);
           setWordDef(def[0]);
+        }, console.error);
+      }, function () {
+        setWordDef({
+          word: undefined
         });
       });
     }
@@ -32789,13 +32777,13 @@ function Dictionary() {
     value: "es"
   }, "Spanish")), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
-  }, "Find")), !wordDef.word ? /*#__PURE__*/_react.default.createElement("div", {
+  }, "Find")), Object.keys(wordDef).length == 0 ? /*#__PURE__*/_react.default.createElement("div", {
     className: "noWordChosen"
   }, "No word chosen") : /*#__PURE__*/_react.default.createElement("div", {
     className: "defintion"
   }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "word"
-  }, wordDef.word || "No word chosen"), /*#__PURE__*/_react.default.createElement("div", {
+  }, wordDef.word || "Sorry, we could not find the definition of the given word."), /*#__PURE__*/_react.default.createElement("div", {
     className: "wordDetails"
   }, wordDef.phonetics[0].text || ""), /*#__PURE__*/_react.default.createElement("div", {
     className: "wordMeaning"
@@ -32957,10 +32945,11 @@ function App() {
     emailsWithIDs: _emails.default
   })), /*#__PURE__*/_react.default.createElement(_OpenDictionaryButton.default, null)), /*#__PURE__*/_react.default.createElement(_Dictionary.default, null), /*#__PURE__*/_react.default.createElement("div", {
     className: "main-section"
-  }, /*#__PURE__*/_react.default.createElement(_DisplayLabels.default, {
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_DisplayLabels.default, {
     labels: labels,
-    setCurrentLabel: setCurrentLabel
-  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    setCurrentLabel: setCurrentLabel,
+    currentLabel: currentLabel
+  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/",
     render: function render() {
       return /*#__PURE__*/_react.default.createElement(_DisplayEmails.default, {
@@ -33006,7 +32995,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54239" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55737" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
