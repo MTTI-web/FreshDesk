@@ -32387,8 +32387,12 @@ function DisplayEmails(_ref) {
 
   ;
   return /*#__PURE__*/_react.default.createElement("div", {
+    className: "emailsPreviewSection"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "currentLabelInEmailsList"
+  }, label), /*#__PURE__*/_react.default.createElement("div", {
     className: "emailsList"
-  }, emailsOfLabels.map(function (email) {
+  }, emailsOfLabels.length ? emailsOfLabels.map(function (email) {
     return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
       to: "/emailView/".concat(email.id),
       key: email.id
@@ -32408,7 +32412,9 @@ function DisplayEmails(_ref) {
     }, email.subject), /*#__PURE__*/_react.default.createElement("div", {
       className: "email-content-preview"
     }, email.content)));
-  }));
+  }) : /*#__PURE__*/_react.default.createElement("div", {
+    className: "noEmailsMessage"
+  }, "No emails in this label.")));
 }
 
 ;
@@ -32538,7 +32544,9 @@ function DeleteEmailOption(_ref) {
       console.log(emailItemsFromArray);
       console.log(deletedEmails);
     }
-  }, "Del");
+  }, /*#__PURE__*/_react.default.createElement("ion-icon", {
+    name: "trash-outline"
+  }));
 }
 
 ;
@@ -32597,7 +32605,9 @@ function ArchiveEmailOption(_ref) {
       });
       console.log(emailItemsFromArray);
     }
-  }, "Archive");
+  }, /*#__PURE__*/_react.default.createElement("ion-icon", {
+    name: "archive-outline"
+  }));
 }
 
 ;
@@ -33002,7 +33012,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55737" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59274" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

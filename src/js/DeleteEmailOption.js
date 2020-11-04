@@ -27,7 +27,7 @@ function DeleteEmailOption({ setDeletedEmails, deletedEmails, emailsWithIDs }) {
                 console.log(deletedEmails);
             }}
         >
-            Del
+            <ion-icon name="trash-outline"></ion-icon>
         </div>
     );
 };

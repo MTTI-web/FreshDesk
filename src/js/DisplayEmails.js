@@ -13,33 +13,37 @@ function DisplayEmails({ emails, label }) {
         emailsOfLabels = emails.filter(email => email.deleted);
     };
     return (
-        <div className="emailsList">
-            {
-                emailsOfLabels.map(email => (
-                    <Link to={`/emailView/${email.id}`} key={email.id}>
-                        <div
-                            className="emailListItem"
-                            data-id={email.id}
-                            onContextMenu={(e) => {
-                                e.preventDefault();
-                                const emailClicked = e.currentTarget;
-                                console.log(e.currentTarget);
-                                emailClicked.classList.toggle("selected");
-                            }}
-                        >
-                            <div className="sender-name">
-                                {email.senderName}
+        <div className="emailsPreviewSection">
+            <div className="currentLabelInEmailsList">{label}</div>
+            <div className="emailsList">
+                {emailsOfLabels.length
+                    ? emailsOfLabels.map(email => (
+                        <Link to={`/emailView/${email.id}`} key={email.id}>
+                            <div
+                                className="emailListItem"
+                                data-id={email.id}
+                                onContextMenu={(e) => {
+                                    e.preventDefault();
+                                    const emailClicked = e.currentTarget;
+                                    console.log(e.currentTarget);
+                                    emailClicked.classList.toggle("selected");
+                                }}
+                            >
+                                <div className="sender-name">
+                                    {email.senderName}
+                                </div>
+                                <div className="email-subject">
+                                    {email.subject}
+                                </div>
+                                <div className="email-content-preview">
+                                    {email.content}
+                                </div>
                             </div>
-                            <div className="email-subject">
-                                {email.subject}
-                            </div>
-                            <div className="email-content-preview">
-                                {email.content}
-                            </div>
-                        </div>
-                    </Link>
-                ))
-            }
+                        </Link>
+                    ))
+                    : <div className="noEmailsMessage">No emails in this label.</div>
+                }
+            </div>
         </div>
     );
 };

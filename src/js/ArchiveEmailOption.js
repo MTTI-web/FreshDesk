@@ -26,7 +26,7 @@ function ArchiveEmailOption({ setArchivedEmails, archivedEmails, emailsWithIDs }
                 console.log(emailItemsFromArray);
             }}
         >
-            Archive
+            <ion-icon name="archive-outline"></ion-icon>
         </div>
     );
 };
