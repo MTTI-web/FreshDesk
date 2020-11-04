@@ -9,7 +9,7 @@ function OpenDictionaryButton() {
                 dictionary.classList.toggle('using');
             }}
         >
-            Dic
+            <ion-icon name="book-outline"></ion-icon>
         </div>
     )
 };

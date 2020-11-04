@@ -185,7 +185,8 @@ header {
 }
 
 .delete-email-option,
-.archive-email-option {
+.archive-email-option,
+.openDictionaryButton {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -199,7 +200,8 @@ header {
 }
 
 .delete-email-option:hover,
-.archive-email-option:hover {
+.archive-email-option:hover,
+.openDictionaryButton:hover {
     font-size: 140%;
 }
 

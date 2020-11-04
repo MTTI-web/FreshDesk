@@ -15,6 +15,7 @@ import CreateLabelOption from './CreateLabelOption.js';
 import OpenDictionaryButton from './OpenDictionaryButton.js';
 import Dictionary from './Dictionary.js';
 import EmailView from './EmailView.js';
+import SetLabelsOption from './SetLabelsOption.js';
 
 function App() {
     const [labels, setLabels] = useState([...labelsArray]);
@@ -44,6 +45,11 @@ function App() {
                         setArchivedEmails={setArchivedEmails}
                         archivedEmails={archivedEmails}
                         emailsWithIDs={emailsWithIDs}
+                    />
+                    <SetLabelsOption
+                        emails={emailsWithIDs}
+                        labels={labels}
+                        currentLabel={currentLabel}
                     />
                 </div>
                 <OpenDictionaryButton />
