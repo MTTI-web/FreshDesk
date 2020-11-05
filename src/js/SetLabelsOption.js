@@ -6,7 +6,7 @@ function SetLabelsOption({ emails, labels, currentLabel, setReRender, reRenderVa
             <select
                 id="setLabelsOptionInput"
                 className="setLabelsOptionInput"
-                value="Inbox"
+                value={currentLabel == "Archived" || currentLabel == "Bin" ? "Inbox" : currentLabel}
                 onChange={(e) => {
                     const labelSelected = e.currentTarget.value;
                     console.log(labelSelected);
@@ -24,7 +24,11 @@ function SetLabelsOption({ emails, labels, currentLabel, setReRender, reRenderVa
                     });
                     console.log(emailItemsFromArray);
                     emailItemsFromArray.forEach(email => {
-                        email.labels.push(labelSelected);
+                        if (!email.labels.includes(labelSelected)) {
+                            email.labels.push(labelSelected);
+                        } else {
+                            console.log(`Email with id, "${email.id}" already has ${labelSelected}.`);
+                        };
                         console.log(email);
                     });
                     setReRender(!reRenderValue);

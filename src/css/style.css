@@ -204,15 +204,12 @@ header {
 
 .dictionary {
     width: 70%;
-    height: 200px;
+    height: 80%;
     overflow: scroll;
     z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #282828;
-    flex-direction: column;
     position: relative;
+    padding: 10px;
 }
 
 .dictionaryOuterModal.using {
@@ -353,4 +350,15 @@ a {
     right: 10px;
     border-radius: 100%;
     color: #fff;
+}
+
+.wordPhonetic {
+    display: inline-block;
+    font-size: 80%;
+    margin-right: 10px;
+}
+
+.wordDefinition {
+    font-size: 90%;
+    margin-left: 30px;
 }

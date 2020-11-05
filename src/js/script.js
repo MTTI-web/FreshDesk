@@ -16,7 +16,7 @@ import OpenDictionaryButton from './OpenDictionaryButton.js';
 import Dictionary from './Dictionary.js';
 import EmailView from './EmailView.js';
 import SetLabelsOption from './SetLabelsOption.js';
-import emails from './emails.js';
+import EmailSearchResults from './EmailSearchResults.js';
 
 function App() {
     const [labels, setLabels] = useState([...labelsArray]);
@@ -32,7 +32,9 @@ function App() {
 
     return (
         <div className="all-page">
-            <DisplayHeader />
+            <DisplayHeader
+                emailsArray={emailsWithIDs}
+            />
             <div className="edit-options-bar">
                 <CreateLabelOption
                     setLabels={setLabels}
@@ -67,13 +69,25 @@ function App() {
                     <Route
                         path="/"
                         render={() => (
-                            <DisplayEmails emails={emails} label={currentLabel} setReRender={setReRender} reRenderValue={reRender} />
+                            <DisplayEmails
+                                emails={emails}
+                                label={currentLabel}
+                                setReRender={setReRender}
+                                reRenderValue={reRender}
+                            />
                         )}
                         exact
                     />
                     <Route
                         path="/emailView/:id"
                         component={EmailView}
+                        exact
+                    />
+                    <Route
+                        path="/emailSearchResults/:searchQuery"
+                        render={() => (
+                            <EmailSearchResults />
+                        )}
                         exact
                     />
                 </Switch>

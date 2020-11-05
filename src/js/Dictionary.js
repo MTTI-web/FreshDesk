@@ -13,6 +13,7 @@ function Dictionary() {
                     className="closeDictionaryButton"
                     onClick={(e) => {
                         document.querySelector('.dictionaryOuterModal').classList.remove("using");
+                        setWordDef({});
                     }}
                 >&times;</div>
                 <form
@@ -40,9 +41,10 @@ function Dictionary() {
                     <select
                         name="langSelectInput"
                         id="langSelectInput"
-                        value="English"
+                        value={currentLang}
                         onChange={e => {
                             setCurrentLang(e.currentTarget.value);
+                            console.log(e.currentTarget.value);
                         }}
                     >
                         <option value="en">English</option>
@@ -64,16 +66,19 @@ function Dictionary() {
                             </h1>
                             <div className="wordPhonetics">
                                 {wordDef.phonetics.map(({ text }) => (
-                                    <div className="wordPhonetic" key={text}>{text}</div>
+                                    <div className="wordPhonetic" key={text || "phonetics"}>{text}</div>
                                 ))}
                             </div>
-                            <div className="wordMeanings">
-                                {wordDef.meanings[0].definitions.map(({ definition }) => (
-                                    <div className="wordDefinition" key={definition}>
-                                        {definition}
-                                    </div>
+                            <ol type="1" className="wordDefinitions">
+                                {wordDef.meanings.map(meaning => (
+                                    meaning.definitions.map(({ definition }) => (
+                                        <li
+                                            className="wordDefinition"
+                                            key={definition}
+                                        >{definition}</li>
+                                    ))
                                 ))}
-                            </div>
+                            </ol>
                         </div>
                         : <div className="loading">Loading...</div>
                     )

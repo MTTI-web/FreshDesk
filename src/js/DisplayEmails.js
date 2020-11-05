@@ -46,7 +46,7 @@ function DisplayEmails({ emails, label, setReRender, reRenderValue }) {
                                                 ));
                                                 console.log(emailArrayObject);
                                                 if (labelClicked != "Inbox" && labelClicked != "Bin" && labelClicked != "Archived") {
-                                                    emailArrayObject.labels.splice(email.labels.indexOf("Inbox"), 1);
+                                                    emailArrayObject.labels.splice(email.labels.indexOf({labelClicked}), 1);
                                                     setReRender(!reRenderValue);
                                                 } else {
                                                     console.log("Cannot remove this label.");
