@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function DisplayEmails({ emails, label }) {
+function DisplayEmails({ emails, label, setReRender, reRenderValue }) {
     let emailsOfLabels;
     if (label != "Bin" && label != "Archived") {
         emailsOfLabels = emails.filter((email) =>
@@ -29,6 +29,37 @@ function DisplayEmails({ emails, label }) {
                                     emailClicked.classList.toggle("selected");
                                 }}
                             >
+                                <div className="labelsInEmailPreview">
+                                    {email.labels.map(label => (
+                                        <div
+                                            className="labelInEmailPreview"
+                                            data-label={label}
+                                            key={label}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                const labelClicked = e.currentTarget.dataset.label;
+                                                console.log(labelClicked);
+                                                const emailSelected = e.currentTarget.parentElement.parentElement;
+                                                console.log(emailSelected.dataset.id);
+                                                const emailArrayObject = emailsOfLabels.find(email => (
+                                                    email.id == emailSelected.dataset.id
+                                                ));
+                                                console.log(emailArrayObject);
+                                                if (labelClicked != "Inbox" && labelClicked != "Bin" && labelClicked != "Archived") {
+                                                    emailArrayObject.labels.splice(email.labels.indexOf("Inbox"), 1);
+                                                    setReRender(!reRenderValue);
+                                                } else {
+                                                    console.log("Cannot remove this label.");
+                                                }
+                                            }}
+                                        >
+                                            {label}
+                                            <div className="removeLabelFromEmailButton">
+                                                &times;
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                                 <div className="sender-name">
                                     {email.senderName}
                                 </div>

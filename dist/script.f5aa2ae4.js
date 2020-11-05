@@ -32368,7 +32368,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function DisplayEmails(_ref) {
   var emails = _ref.emails,
-      label = _ref.label;
+      label = _ref.label,
+      setReRender = _ref.setReRender,
+      reRenderValue = _ref.reRenderValue;
   var emailsOfLabels;
 
   if (label != "Bin" && label != "Archived") {
@@ -32406,6 +32408,34 @@ function DisplayEmails(_ref) {
         emailClicked.classList.toggle("selected");
       }
     }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "labelsInEmailPreview"
+    }, email.labels.map(function (label) {
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "labelInEmailPreview",
+        "data-label": label,
+        key: label,
+        onClick: function onClick(e) {
+          e.preventDefault();
+          var labelClicked = e.currentTarget.dataset.label;
+          console.log(labelClicked);
+          var emailSelected = e.currentTarget.parentElement.parentElement;
+          console.log(emailSelected.dataset.id);
+          var emailArrayObject = emailsOfLabels.find(function (email) {
+            return email.id == emailSelected.dataset.id;
+          });
+          console.log(emailArrayObject);
+
+          if (labelClicked != "Inbox" && labelClicked != "Bin" && labelClicked != "Archived") {
+            emailArrayObject.labels.splice(email.labels.indexOf("Inbox"), 1);
+            setReRender(!reRenderValue);
+          } else {
+            console.log("Cannot remove this label.");
+          }
+        }
+      }, label, /*#__PURE__*/_react.default.createElement("div", {
+        className: "removeLabelFromEmailButton"
+      }, "\xD7"));
+    })), /*#__PURE__*/_react.default.createElement("div", {
       className: "sender-name"
     }, email.senderName), /*#__PURE__*/_react.default.createElement("div", {
       className: "email-subject"
@@ -32801,10 +32831,22 @@ function Dictionary() {
   }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "word"
   }, wordDef.word || "Sorry, we could not find the definition of the given word."), /*#__PURE__*/_react.default.createElement("div", {
-    className: "wordDetails"
-  }, wordDef.phonetics[0].text || ""), /*#__PURE__*/_react.default.createElement("div", {
-    className: "wordMeaning"
-  }, wordDef.meanings[0].definitions[0].definition || "")) : /*#__PURE__*/_react.default.createElement("div", {
+    className: "wordPhonetics"
+  }, wordDef.phonetics.map(function (_ref) {
+    var text = _ref.text;
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: "wordPhonetic",
+      key: text
+    }, text);
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "wordMeanings"
+  }, wordDef.meanings[0].definitions.map(function (_ref2) {
+    var definition = _ref2.definition;
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: "wordDefinition",
+      key: definition
+    }, definition);
+  }))) : /*#__PURE__*/_react.default.createElement("div", {
     className: "loading"
   }, "Loading...")));
 }
@@ -32840,7 +32882,9 @@ function EmailView(props) {
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/",
     className: "emailBackButton"
-  }, "Back"), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("ion-icon", {
+    name: "arrow-back-outline"
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: "emailViewSubject"
   }, emailSelected.subject), /*#__PURE__*/_react.default.createElement("div", {
     className: "senderDetails"
@@ -32878,7 +32922,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function SetLabelsOption(_ref) {
   var emails = _ref.emails,
       labels = _ref.labels,
-      currentLabel = _ref.currentLabel;
+      currentLabel = _ref.currentLabel,
+      setReRender = _ref.setReRender,
+      reRenderValue = _ref.reRenderValue;
   return /*#__PURE__*/_react.default.createElement("form", {
     className: "setLabelsOptionForm"
   }, /*#__PURE__*/_react.default.createElement("select", {
@@ -32888,6 +32934,24 @@ function SetLabelsOption(_ref) {
     onChange: function onChange(e) {
       var labelSelected = e.currentTarget.value;
       console.log(labelSelected);
+      var selectedEmails = document.querySelectorAll(".emailListItem.selected");
+      var IDsOfSelectedEmails = [];
+      selectedEmails.forEach(function (email) {
+        IDsOfSelectedEmails.push(email.dataset.id);
+      });
+      var emailItemsFromArray = emails.filter(function (email) {
+        if (IDsOfSelectedEmails.includes(email.id)) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      console.log(emailItemsFromArray);
+      emailItemsFromArray.forEach(function (email) {
+        email.labels.push(labelSelected);
+        console.log(email);
+      });
+      setReRender(!reRenderValue);
     }
   }, labels.map(function (label) {
     return label == "Bin" || label == "Archived" ? null : /*#__PURE__*/_react.default.createElement("option", {
@@ -32984,6 +33048,16 @@ function App() {
       archivedEmails = _useState8[0],
       setArchivedEmails = _useState8[1];
 
+  var _useState9 = (0, _react.useState)(_emails.default),
+      _useState10 = _slicedToArray(_useState9, 2),
+      emails = _useState10[0],
+      setEmails = _useState10[1];
+
+  var _useState11 = (0, _react.useState)(true),
+      _useState12 = _slicedToArray(_useState11, 2),
+      reRender = _useState12[0],
+      setReRender = _useState12[1];
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "all-page"
   }, /*#__PURE__*/_react.default.createElement(_DisplayHeader.default, null), /*#__PURE__*/_react.default.createElement("div", {
@@ -33004,7 +33078,9 @@ function App() {
   }), /*#__PURE__*/_react.default.createElement(_SetLabelsOption.default, {
     emails: _emails.default,
     labels: labels,
-    currentLabel: currentLabel
+    currentLabel: currentLabel,
+    setReRender: setReRender,
+    reRenderValue: reRender
   })), /*#__PURE__*/_react.default.createElement(_OpenDictionaryButton.default, null)), /*#__PURE__*/_react.default.createElement(_Dictionary.default, null), /*#__PURE__*/_react.default.createElement("div", {
     className: "main-section"
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_DisplayLabels.default, {
@@ -33015,8 +33091,10 @@ function App() {
     path: "/",
     render: function render() {
       return /*#__PURE__*/_react.default.createElement(_DisplayEmails.default, {
-        emails: _emails.default,
-        label: currentLabel
+        emails: emails,
+        label: currentLabel,
+        setReRender: setReRender,
+        reRenderValue: reRender
       });
     },
     exact: true
@@ -33057,7 +33135,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62093" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55593" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

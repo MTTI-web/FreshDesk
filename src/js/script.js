@@ -16,6 +16,7 @@ import OpenDictionaryButton from './OpenDictionaryButton.js';
 import Dictionary from './Dictionary.js';
 import EmailView from './EmailView.js';
 import SetLabelsOption from './SetLabelsOption.js';
+import emails from './emails.js';
 
 function App() {
     const [labels, setLabels] = useState([...labelsArray]);
@@ -26,6 +27,8 @@ function App() {
     const [archivedEmails, setArchivedEmails] = useState(
         [...emailsWithIDs.filter(email => { email.archived })]
     );
+    const [emails, setEmails] = useState(emailsWithIDs);
+    const [reRender, setReRender] = useState(true);
 
     return (
         <div className="all-page">
@@ -50,6 +53,8 @@ function App() {
                         emails={emailsWithIDs}
                         labels={labels}
                         currentLabel={currentLabel}
+                        setReRender={setReRender}
+                        reRenderValue={reRender}
                     />
                 </div>
                 <OpenDictionaryButton />
@@ -62,7 +67,7 @@ function App() {
                     <Route
                         path="/"
                         render={() => (
-                            <DisplayEmails emails={emailsWithIDs} label={currentLabel} />
+                            <DisplayEmails emails={emails} label={currentLabel} setReRender={setReRender} reRenderValue={reRender} />
                         )}
                         exact
                     />

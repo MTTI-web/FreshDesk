@@ -62,11 +62,17 @@ function Dictionary() {
                             <h1 className="word">
                                 {wordDef.word || "Sorry, we could not find the definition of the given word."}
                             </h1>
-                            <div className="wordDetails">
-                                {wordDef.phonetics[0].text || ""}
+                            <div className="wordPhonetics">
+                                {wordDef.phonetics.map(({ text }) => (
+                                    <div className="wordPhonetic" key={text}>{text}</div>
+                                ))}
                             </div>
-                            <div className="wordMeaning">
-                                {wordDef.meanings[0].definitions[0].definition || ""}
+                            <div className="wordMeanings">
+                                {wordDef.meanings[0].definitions.map(({ definition }) => (
+                                    <div className="wordDefinition" key={definition}>
+                                        {definition}
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         : <div className="loading">Loading...</div>
